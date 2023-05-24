@@ -1,7 +1,7 @@
-import { BsPlusLg } from 'react-icons/bs';
-import { FiMinus } from 'react-icons/fi';
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { FiMinus } from 'react-icons/fi';
+import { BsPlusLg } from 'react-icons/bs';
+import PropTypes from 'prop-types';
 
 const NumberInput = (props) => {
 	const [currentValue, setCurrentValue] = useState(props.dfValue);

@@ -61,11 +61,8 @@ select {
 }
 
 input[type='text'] {
-	appearance: none;
-	padding: 1rem;
-	border: 0.063rem solid var(--red-100);
-	color: var(--yellow-100);
-	transition: 0.2s all linear;
+	all: unset;
+	width: 100%;
 }
 
 input[type='radio'] {
@@ -96,6 +93,21 @@ input[type='number']::-webkit-outer-spin-button {
 hr {
 	width: 95%;
 	border-top: 0.063rem solid var(--orange-100);
+}
+
+.hidden-input {
+	display: none !important;
+}
+
+.input-text {
+	padding: 1rem;
+	width: 100%;
+	border: 0.063rem solid var(--red-100);
+	border-radius: 0.3rem;
+	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .input-number-count {
@@ -133,6 +145,7 @@ hr {
 	display: flex;
 	gap: 1rem;
 	margin: 0 3rem 0 1rem;
+	width: 65%;
 }
 
 .icon-image {

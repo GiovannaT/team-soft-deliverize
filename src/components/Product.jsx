@@ -1,7 +1,14 @@
+import { useForm } from 'react-hook-form';
 import { useGetProducts } from '../api/queries';
+
 import NumberInput from './NumberInput';
+
 const Product = () => {
 	const { data } = useGetProducts();
+
+	const { register, handleSubmit } = useForm();
+
+	const onSubmit = (data) => console.log(data);
 
 	return (
 		<>
@@ -10,7 +17,18 @@ const Product = () => {
 					data.map((product) => {
 						const ingredients = Object.values(product.ingredients);
 						return (
-							<div key={product.id} className='product-view'>
+							<form
+								key={product.id}
+								className='product-view'
+								onSubmit={handleSubmit(onSubmit)}
+							>
+								<input
+									type='text'
+									defaultValue={product.nm_product}
+									value={product.nm_product}
+									className='hidden-input'
+									{...register('product')}
+								/>
 								<div className='product-description'>
 									<img src='src/assets/foto.png' alt={product.nm_product} />
 									<h3>{product.nm_product}</h3>
@@ -91,11 +109,11 @@ const Product = () => {
 											})}
 									</div>
 									<div className='product-choices-submit'>
-										<NumberInput dfValue={1} />
+										<NumberInput dfValue={1} {...register('number')} />
 										<button type='submit'>Adicionar</button>
 									</div>
 								</div>
-							</div>
+							</form>
 						);
 					})}
 			</div>
