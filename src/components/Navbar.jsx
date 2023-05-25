@@ -10,7 +10,7 @@ import Select from '@mui/material/Select';
 import { useState } from 'react';
 
 const Navbar = () => {
-	const [adress, setadress] = useState('');
+	const [adress, setadress] = useState('R Antonio Braune, 21');
 
 	const handleChange = (event) => {
 		setadress(event.target.value);
@@ -25,6 +25,7 @@ const Navbar = () => {
 			<div className='navbar-user-dinamics'>
 				<FormControl fullWidth>
 					<Select
+						className='select'
 						labelId='demo-simple-select-label'
 						id='demo-simple-select'
 						value={adress}
@@ -32,7 +33,7 @@ const Navbar = () => {
 						placeholder='Selecione o endereço'
 						onChange={handleChange}
 					>
-						<MenuItem value='R Antonio Braune, 21'>
+						<MenuItem className='select-option' value='R Antonio Braune, 21'>
 							R Antonio Braune, 21
 						</MenuItem>
 						<MenuItem value='R Antonio Braune, 22'>

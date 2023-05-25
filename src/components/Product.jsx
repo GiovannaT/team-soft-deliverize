@@ -1,14 +1,31 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useGetProducts } from '../api/queries';
+import Popover from '@mui/material/Popover';
 
+import { useGetProducts } from '../api/queries';
 import NumberInput from './NumberInput';
 
 const Product = () => {
 	const { data } = useGetProducts();
 
+	const [anchorEl, setAnchorEl] = useState(null);
+
+	const handleClick = (event) => {
+		setAnchorEl(event.currentTarget);
+	};
+
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+
+	const open = Boolean(anchorEl);
+	const id = open ? 'simple-popover' : undefined;
+
 	const { register, handleSubmit } = useForm();
 
-	const onSubmit = (data) => console.log(data);
+	const onSubmit = (data) => {
+		console.log(data);
+	};
 
 	return (
 		<>
@@ -68,7 +85,7 @@ const Product = () => {
 																				<h3>{item.nm_item}</h3>
 																				<p>+R${item.vl_item}</p>
 																			</div>
-																			<NumberInput dfValue={0} />
+																			<NumberInput />
 																		</div>
 																		<hr />
 																	</>
@@ -109,8 +126,37 @@ const Product = () => {
 											})}
 									</div>
 									<div className='product-choices-submit'>
-										<NumberInput dfValue={1} {...register('number')} />
-										<button type='submit'>Adicionar</button>
+										<NumberInput {...register('number')} />
+										<button type='submit' onClick={handleClick}>
+											Adicionar
+										</button>
+										<div>
+											<Popover
+												id={id}
+												open={open}
+												anchorEl={anchorEl}
+												onClose={handleClose}
+												anchorReference='anchorPosition'
+												anchorPosition={{ top: 110, left: 1500 }}
+												anchorOrigin={{
+													vertical: 'top',
+													horizontal: 'right',
+												}}
+												transformOrigin={{
+													vertical: 'center',
+													horizontal: 'center',
+												}}
+											>
+												<div className='popover-content'>
+													<h4 className='popover-content-title'>
+														Adicionado com Sucesso
+													</h4>
+													<h5 className='popover-content-product'>
+														{product.nm_product}
+													</h5>
+												</div>
+											</Popover>
+										</div>
 									</div>
 								</div>
 							</form>
