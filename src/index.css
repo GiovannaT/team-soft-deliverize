@@ -353,10 +353,20 @@ hr {
 		width: 100vw;
 	}
 
+	input[type='number'] {
+		all: unset;
+		display: flex;
+		width: 30%;
+	}
+
+	.input-text {
+		width: 90%;
+	}
+
 	.navbar-container {
 		all: unset;
 		display: flex;
-		align-items: center;
+		flex-direction: column;
 		text-align: center;
 		justify-content: center;
 		padding: 1rem;
@@ -366,7 +376,14 @@ hr {
 
 	.navbar-images {
 		display: flex;
-		gap: 3rem;
+		align-items: center;
+	}
+
+	.navbar-hamburguer-menu {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		margin-top: 1rem;
 		justify-content: center;
 		align-items: center;
 	}
@@ -399,12 +416,6 @@ hr {
 	.product-choices {
 		all: unset;
 		border: 0;
-	}
-
-	input[type='number'] {
-		all: unset;
-		display: flex;
-		width: 30%;
 	}
 
 	.input-number-count {

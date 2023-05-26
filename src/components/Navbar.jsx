@@ -1,6 +1,7 @@
 import {
 	BsChevronLeft,
 	BsPersonCircle,
+	BsXLg,
 	BsCart3,
 	BsSearch,
 } from 'react-icons/bs';
@@ -10,6 +11,7 @@ import Select from '@mui/material/Select';
 import { useState } from 'react';
 
 const Navbar = () => {
+	const [open, setOpen] = useState(false);
 	const [adress, setadress] = useState('R Antonio Braune, 21');
 
 	const handleChange = (event) => {
@@ -17,12 +19,25 @@ const Navbar = () => {
 	};
 
 	return (
-		<div className='navbar-container'>
+		<nav className='navbar-container'>
 			<div className='navbar-images'>
-				<BsChevronLeft className='chevron-left' />
+				{open ? (
+					<BsXLg
+						onClick={() => {
+							setOpen(false);
+						}}
+					/>
+				) : (
+					<BsChevronLeft
+						className='chevron-left'
+						onClick={() => {
+							setOpen(true);
+						}}
+					/>
+				)}
 				<img src='src/assets/deliverize.png' alt='logo' />
 			</div>
-			<div className='navbar-user-dinamics'>
+			<div className={open ? 'navbar-hamburguer-menu' : 'navbar-user-dinamics'}>
 				<FormControl fullWidth>
 					<Select
 						className='select'
@@ -57,7 +72,7 @@ const Navbar = () => {
 					Carrinho
 				</button>
 			</div>
-		</div>
+		</nav>
 	);
 };
 
