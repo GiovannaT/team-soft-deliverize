@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { FiMinus } from 'react-icons/fi';
 import { BsPlusLg } from 'react-icons/bs';
-import PropTypes from 'prop-types';
 
 const NumberInput = () => {
 	const [currentValue, setCurrentValue] = useState(0);
@@ -35,7 +34,4 @@ const NumberInput = () => {
 	);
 };
 
-NumberInput.propTypes = {
-	dfValue: PropTypes.number.isRequired,
-};
 export default NumberInput;

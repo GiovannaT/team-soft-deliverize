@@ -106,6 +106,7 @@ const Product = () => {
 																				name='boolean'
 																				value='yes'
 																				id='talher1'
+																				{...register('talher_sim')}
 																			/>
 																		</div>
 																		<div className='footer-input'>
@@ -115,6 +116,7 @@ const Product = () => {
 																				name='boolean'
 																				value='no'
 																				id='talher2'
+																				{...register('talher_nao')}
 																			/>
 																		</div>
 																	</form>
